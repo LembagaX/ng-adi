@@ -37,6 +37,7 @@
     "perfect-scrollbar": "^1.4.0",
     "popper.js": "^1.14.4",
     "rxjs": "~6.2.0",
+    "ts-md5": "^1.2.4",
     "typescript": "~2.9.2",
     "zone.js": "~0.8.26"
   },
