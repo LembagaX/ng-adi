@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'adi-client';
+  authenticated = false;
+
+  constructor(private _router: Router){
+    // TODO : authenticated set to true if user cookie was exist
+  }
 }

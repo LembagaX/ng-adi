@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Md5 } from 'ts-md5/dist/md5';
 
 @Injectable({
@@ -8,11 +7,15 @@ import { Md5 } from 'ts-md5/dist/md5';
 export class GravatarParserService {
 
   uri = "https://www.gravatar.com/avatar/";
-  email = "lembagax@gmail.com";
+  email = "example@example.com";
   image;
 
-  constructor(private _http: HttpClient) {
+  constructor() {
     this.image = this.uri + Md5.hashStr(this.email);
   }
-
+  
+  buildImage(email: string){
+    this.email = email;
+    this.image = this.uri + Md5.hashStr(this.email);
+  }
 }
