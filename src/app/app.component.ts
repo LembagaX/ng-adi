@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticatedUserRetrieverService } from './authenticated-user-retriever.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,13 @@ export class AppComponent {
   title = 'adi-client';
   authenticated = false;
 
-  constructor(private _router: Router){
-    // TODO : authenticated set to true if user cookie was exist
+  constructor(
+    private _router: Router,
+    private _user: AuthenticatedUserRetrieverService
+    ){
+    if (this._user.isAuthenticated) {
+      this.authenticated = true;
+    }
+    this._router.navigate(['/dashboard']);
   }
 }
