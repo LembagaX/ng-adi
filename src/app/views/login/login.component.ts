@@ -16,18 +16,14 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  public faUser = faUser;
-  public faKey = faKey;
-  public gravatar;
-  public buttonMessage = 'Sign in';
-  public buttonDisabled = false;
-  public emailPlaceholder = 'Yourmail@domain.com'
-  public email = new FormControl('', [
-    Validators.required
-  ]);
-  public password = new FormControl('', [
-    Validators.required
-  ]);
+  public faUser;
+  public faKey;
+  public gravatar: string;
+  public buttonMessage: string;
+  public buttonDisabled: boolean;
+  public emailPlaceholder: string;
+  public email: FormControl;
+  public password: FormControl;
 
   constructor(
     private _gravatar: GravatarParserService,
@@ -36,14 +32,20 @@ export class LoginComponent implements OnInit {
     private _router: Router,
     private _authenticate_user: AuthenticatedUserRetrieverService,
     private _notifier: NotifierService
-    ) {
-      if (this._authenticate_user.isAuthenticated()){
-        this._router.navigate(['/dashboard']);
-        this._notifier.notify('default', 'Already signed in.');
-      }
-    }
+    ) {}
 
   ngOnInit() {
+    if (this._authenticate_user.isAuthenticated()){
+      this._router.navigate(['/dashboard']);
+      this._notifier.notify('default', 'Already signed in.');
+    }
+    this.faKey = faKey;
+    this.faUser = faUser;
+    this.buttonMessage = 'Sign in';
+    this.buttonDisabled =  false;
+    this.emailPlaceholder = 'yourmail@domain.com';
+    this.email = new FormControl('', [Validators.required]);
+    this.password = new FormControl('', [Validators.required]);
     this.gravatar = this._gravatar.image;
   }
 
@@ -83,7 +85,7 @@ export class LoginComponent implements OnInit {
       switch (response.code) {
         case 200:
           this._authenticate_user.writeUser(response);
-          this._spinner.hide;
+          this._spinner.hide();
           this._notifier.notify('default', 'Yay, we found you !');
           this._router.navigate(['/dashboard']);
           this._notifier.notify('default', 'Successfuly signed in !');

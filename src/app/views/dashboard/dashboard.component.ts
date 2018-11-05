@@ -12,16 +12,15 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private _router: Router,
-    private _authenticate_user: AuthenticatedUserRetrieverService,
+    private _user: AuthenticatedUserRetrieverService,
     private _notifier: NotifierService
-    ) {
-    if (!this._authenticate_user.isAuthenticated()) {
+    ) {}
+
+  ngOnInit(){
+    if (this._user.isAuthenticated()) {
+    } else {
       this._notifier.notify('error', 'You need to sign in first.');
       this._router.navigate(['/login']);
     }
   }
-
-  ngOnInit() {
-  }
-
 }

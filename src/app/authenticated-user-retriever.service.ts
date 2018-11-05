@@ -5,10 +5,9 @@ import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthenticatedUserRetrieverService {
-  constructor(
-    private _cookie: CookieService
-  ) { }
+  constructor(private _cookie: CookieService) { }
 
   public writeUser(jwt: JwtToken) {
     this._cookie.set('user.name', jwt.user.name);
@@ -18,10 +17,8 @@ export class AuthenticatedUserRetrieverService {
 
   public isAuthenticated(){
     if (this._cookie.get('user.token').length != 0){
-      console.log('Token found');
       return true;
     }
-    console.log('Token not found');
     return false;
   }
 

@@ -8,61 +8,61 @@ import { GravatarParserService } from '../../gravatar-parser.service';
 })
 export class NavbarComponent implements OnInit {
 
-  gravatar = this._gravatar.image;
-
-  links = [
-    {
-      display: 'Dashboard',
-      uri: 'dashboard'
-    }
-  ];
-
-  avatar_links = [
-    {
-      display: 'Updates',
-      class: 'text-primary'
-    },
-    {
-      display: 'Messages',
-      class: 'text-primary'
-    },
-    {
-      display: 'Tasks',
-      class: 'text-primary'
-    },
-    {
-      display: 'Comments',
-      class: 'text-primary'
-    },
-    {
-      display: 'Profile',
-      class: 'text-primary'
-    },
-    {
-      display: 'Settings',
-      class: 'text-primary'
-    },
-    {
-      display: 'Payments',
-      class: 'text-primary'
-    },
-    {
-      display: 'Projects',
-      class: 'text-primary'
-    },
-    {
-      display: 'Lock Account',
-      class: 'text-primary'
-    },
-    {
-      display: 'Logout'
-    }
-  ];
-
-  constructor(private _gravatar: GravatarParserService){
-
-  }
+  public gravatar: string;
+  public links: any ;
+  public avatar_links: any;
   
-  ngOnInit(){}
+  constructor(private _gravatar: GravatarParserService){}
+  
+  public ngOnInit(){
+    this.gravatar = this._gravatar.image
+    this.links = [
+      {
+        display: 'Dashboard',
+        uri: 'dashboard'
+      }
+    ];
+    this.avatar_links = [
+      {
+        display: 'Updates',
+        class: 'text-primary'
+      },
+      {
+        display: 'Messages',
+        class: 'text-primary'
+      },
+      {
+        display: 'Tasks',
+        class: 'text-primary'
+      },
+      {
+        display: 'Comments',
+        class: 'text-primary'
+      },
+      {
+        display: 'Profile',
+        class: 'text-primary'
+      },
+      {
+        display: 'Settings',
+        class: 'text-primary'
+      },
+      {
+        display: 'Payments',
+        class: 'text-primary'
+      },
+      {
+        display: 'Projects',
+        class: 'text-primary'
+      },
+      {
+        display: 'Lock Account',
+        class: 'text-primary'
+      },
+      {
+        display: 'Logout'
+      }
+    ];
+  }
 
 }

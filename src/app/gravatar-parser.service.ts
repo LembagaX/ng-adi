@@ -6,15 +6,17 @@ import { Md5 } from 'ts-md5/dist/md5';
 })
 export class GravatarParserService {
 
-  uri = "https://www.gravatar.com/avatar/";
-  email = "example@example.com";
-  image;
+  public uri: string;
+  public email: string;
+  public image: string;
 
   constructor() {
+    this.uri = 'https://www.gravatar.com/avatar/';
+    this.email = 'example@example.com';
     this.image = this.uri + Md5.hashStr(this.email);
   }
   
-  buildImage(email: string){
+  public buildImage(email: string){
     this.email = email;
     this.image = this.uri + Md5.hashStr(this.email);
   }
